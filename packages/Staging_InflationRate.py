@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 
 # Specify the path to the ChromeDriver executable
-webdriver_path = 'C:\Program Files\driver\chromedriver.exe'
+webdriver_path = '.\driver\chromedriver.exe'
 
 # Configure the Selenium webdriver
 service = Service(webdriver_path)
@@ -51,7 +51,6 @@ for row in rows:
 
     # Extract the cell contents
     data = [cell.text.strip() for cell in cells]
-
     # Check if the data already exists in the "InflationData" table based on the date
     cursor.execute('SELECT COUNT(*) FROM Scrape.InflationData WHERE StatDate = ?', data[0])
     count = cursor.fetchone()[0]

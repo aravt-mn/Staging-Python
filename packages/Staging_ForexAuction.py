@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 
 # Specify the path to the ChromeDriver executable
-webdriver_path = 'C:\Program Files\driver\chromedriver.exe'
+webdriver_path = '.\driver\chromedriver.exe'
 
 # Configure the Selenium webdriver
 service = Service(webdriver_path)
