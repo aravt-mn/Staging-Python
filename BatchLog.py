@@ -42,15 +42,7 @@ def load_packages():
                             VALUES (?, 'Started', ?);
                             SELECT SCOPE_IDENTITY() AS LastLogId;
                             ''', (pack[0], datetimedd))
-                cursor.execute("SELECT BATCH_LOG_ID FROM BatchLog WHERE BATCH_NAME='Python' AND LOAD_START_DATETIME = ?",datetimedd)
-                log = cursor.fetchall()
-                            
-                cursor.execute('''
-                            INSERT INTO [dbo].[PackageLog] (BATCH_NAME, PACKAGE_NAME, BATCH_LOG_ID, LOAD_START_DATETIME, LOAD_STATUS)
-                            VALUES (?, ?, ?, ?, 'Started');
-                            SELECT SCOPE_IDENTITY() AS LastLogId;
-                            ''', (pack[0], pack[1], log, datetimedd))
-                conn.commit()
+            conn.commit()
         else:
             print(f'Package file not found for {package_name}')
 
